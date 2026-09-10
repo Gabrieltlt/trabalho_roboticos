@@ -84,7 +84,6 @@ class Navigator(Node):
         self.finished = False
 
         self.get_logger().info('Navegador iniciado!')
-        self.get_logger().info(f'Missão: {" -> ".join(self.goal_names)}')
 
     def odom_callback(self, msg):
         self.x = msg.pose.pose.position.x
@@ -147,8 +146,6 @@ class Navigator(Node):
             if now >= self.wait_until:
                 self.waiting = False
                 self.current_goal += 1
-                if self.current_goal < len(self.goals):
-                    self.get_logger().info(f'Próximo destino: {self.goal_names[self.current_goal]}')
             return
 
         goal_x, goal_y = self.goals[self.current_goal]
@@ -157,16 +154,14 @@ class Navigator(Node):
         distance = math.hypot(dx, dy)
 
         if distance < self.goal_tolerance:
-            self.get_logger().info(f'Chegou: {self.goal_names[self.current_goal]} '
-                                    f'({goal_x:.2f}, {goal_y:.2f})')
             if self.current_goal in self.wait_points:
+                self.get_logger().info(f'Chegou: {self.goal_names[self.current_goal]} '
+                                        f'({goal_x:.2f}, {goal_y:.2f})')
                 self.waiting = True
                 self.wait_until = (self.get_clock().now().nanoseconds / 1e9 + 2.0)
                 self.cmd_pub.publish(Twist())
             else:
                 self.current_goal += 1
-                if self.current_goal < len(self.goals):
-                    self.get_logger().info(f'Próximo destino: {self.goal_names[self.current_goal]}')
             return
 
         desired_angle = math.atan2(dy, dx)
