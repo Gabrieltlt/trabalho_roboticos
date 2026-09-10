@@ -3,12 +3,9 @@
 <package format="3">
   <name>trabalho_roboticos</name>
   <version>0.0.1</version>
-  <description>
-    Navegação autônoma do TurtleBot3 Burger com desvio de obstáculos
-    (Trabalho 2 - Robô Navegador Gazebo).
-  </description>
-  <maintainer email="you@example.com">seu_nome</maintainer>
-  <license>MIT</license>
+  <description>Navegação autônoma do TurtleBot3 até alvos com desvio de obstáculos</description>
+  <maintainer email="gabrieltlt721@gmail.com">Gabriel Torres</maintainer>
+  <license>Apache-2.0</license>
 
   <exec_depend>rclpy</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>

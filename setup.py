@@ -14,14 +14,14 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='seu_nome',
-    maintainer_email='you@example.com',
-    description='Navegação autônoma do TurtleBot3 Burger (Trabalho 2 - Robótica).',
+    maintainer='Gabriel Torres',
+    maintainer_email='gabrieltlt721@gmail.com.com',
+    description='Navegação autônoma do TurtleBot3 Burger (Trabalho Final - Sistemas Robóticos).',
     license='MIT',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'navigator_node = trabalho_roboticos.codigo:main',
+            'navigator = trabalho_roboticos.navigator:main',
         ],
     },
 )
